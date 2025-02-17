@@ -5,11 +5,13 @@ import { Outlet } from "react-router-dom";
 
 const AdminDashboard = () => {
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       <AdminSideBar />
-      <div className="flex-1 bg-gray-100 h-screen">
+      <div className="flex flex-col flex-1 bg-gray-100">
         <Navbar />
-        <Outlet />
+        <div className="flex-1 overflow-y-auto p-4">
+          <Outlet /> {/* Child routes (like your long form) will be rendered here */}
+        </div>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ const DepartmentList = () => {
       prevFiltered.filter(dep => dep._id !== deletedId)
     );
   };
-  
+
 
   useEffect(() => {
     const fetchDepartments = async () => {
