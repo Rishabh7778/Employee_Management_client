@@ -13,7 +13,9 @@ import AddDepartment from './components/departments/AddDepartment';
 import EditDepartment from './components/departments/EditDepartment';
 import List from './components/employee/List';
 import Add from './components/employee/Add';
+import AddSalary from './components/salary/Add';
 import View from './components/employee/View';
+import ViewSalary from './components/salary/View';
 import Edit from './components/employee/Edit';
 
 
@@ -40,6 +42,8 @@ function App() {
           <Route path='/admin-dashboard/add-employee' element={<Add />} />
           <Route path='/admin-dashboard/employees/:id' element={<View />} />
           <Route path='/admin-dashboard/employees/edit/:id' element={<Edit />} />
+          <Route path='/admin-dashboard/salary/add' element={<AddSalary />} />
+          <Route path='/admin-dashboard/employees/salary/:id' element={<ViewSalary />} />
         </Route>
         <Route path='/employee-dashboard' element={<EmployeeDashboard />} />
         <Route path='/unauthorized' element={<Unauthor />} />

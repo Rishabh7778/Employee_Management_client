@@ -48,7 +48,7 @@ const AdminSideBar = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/admin-dashboard"
+                    to="/admin-dashboard/salary/add"
                     className="flex items-center gap-4 px-5 py-4 rounded-lg text-lg hover:bg-gray-800 transition"
                 >
                     <FaMoneyBillWave className="text-xl" />

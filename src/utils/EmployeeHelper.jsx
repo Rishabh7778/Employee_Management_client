@@ -60,22 +60,31 @@ export const columns = [
 
 
 export const fetchDepartments = async () => {
-    let departments
     try {
         const response = await axios.get('http://localhost:8000/api/department', {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }
         });
-        console.log("API Response:", response.data);
-        if (response.data.success) {
-            departments = response.data.departments
-        }
+        return response.data.departments || []; // Always return array
     } catch (error) {
         console.error("Error fetching departments:", error);
-        alert(error.response?.data?.error || "Server Error!");
+        return []; // Return empty array on error
     }
-    return departments
+};
+
+export const getEmployees = async (id) => {
+    try {
+        const response = await axios.get(`http://localhost:8000/api/employee/department/${id}`, {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        return response.data.employees || [];
+    } catch (error) {
+        console.error("Error fetching employees:", error);
+        return []; // Return empty array on error
+    }
 };
 
 export const EmployeeButtons = ({ Id }) => {
@@ -94,7 +103,8 @@ export const EmployeeButtons = ({ Id }) => {
                 Edit
             </button>
             <button
-                className="px-3 py-1 bg-yellow-500 text-white font-semibold rounded-md hover:bg-yellow-600 transition">
+                className="px-3 py-1 bg-yellow-500 text-white font-semibold rounded-md hover:bg-yellow-600 transition"
+                onClick={()=> navigate(`/admin-dashboard/employees/salary/${Id}`)}>
                 Salary
             </button>
             <button
