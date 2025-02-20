@@ -7,10 +7,10 @@ export const columns = [
         name: "S.No",
         selector: (row) => row.sno,
         width: "70px",
-        style: { 
-            fontSize: "14px", 
-            fontWeight: "bold", 
-            textAlign: "center" 
+        style: {
+            fontSize: "14px",
+            fontWeight: "bold",
+            textAlign: "center"
         }
     },
     {
@@ -23,10 +23,10 @@ export const columns = [
         selector: (row) => row.name,
         sortable: true,
         width: "130px",
-        style: { 
-            fontSize: "14px", 
-            fontWeight: "bold", 
-            textAlign: "center" 
+        style: {
+            fontSize: "14px",
+            fontWeight: "bold",
+            textAlign: "center"
         }
     },
     {
@@ -41,7 +41,7 @@ export const columns = [
         selector: (row) => row.dob,
         sortable: true,
         width: "130px",
-        style: { 
+        style: {
             textAlign: 'center',
             fontSize: "14px",
             fontWeight: "bold"
@@ -50,7 +50,7 @@ export const columns = [
     {
         name: "Action",
         selector: (row) => row.action,
-        style: { 
+        style: {
             textAlign: 'center',
             fontSize: "14px",
             fontWeight: "bold"
@@ -93,22 +93,23 @@ export const EmployeeButtons = ({ Id }) => {
     return (
         <div className="flex space-x-2">
             <button
-                className="px-3 py-1 bg-teal-500 text-white font-semibold rounded-md hover:bg-teal-600 transition"
+                className="px-3 py-1 bg-teal-500 text-white font-semibold rounded-md cursor-pointer hover:bg-teal-600 transition"
                 onClick={() => navigate(`/admin-dashboard/employees/${Id}`)}>
                 View
             </button>
             <button
-                className="px-3 py-1 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition"
-                    onClick={() => navigate(`/admin-dashboard/employees/edit/${Id}`)}>
+                className="px-3 py-1 bg-green-600 text-white font-semibold rounded-md cursor-pointer hover:bg-green-700 transition"
+                onClick={() => navigate(`/admin-dashboard/employees/edit/${Id}`)}>
                 Edit
             </button>
             <button
-                className="px-3 py-1 bg-yellow-500 text-white font-semibold rounded-md hover:bg-yellow-600 transition"
-                onClick={()=> navigate(`/admin-dashboard/employees/salary/${Id}`)}>
+                className="px-3 py-1 bg-yellow-500 text-white font-semibold rounded-md cursor-pointer hover:bg-yellow-600 transition"
+                onClick={() => navigate(`/admin-dashboard/employees/salary/${Id}`)}>
                 Salary
             </button>
             <button
-                className="px-3 py-1 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 transition">
+                onClick={() => navigate(`/admin-dashboard/employees/leaves/${Id}`)}
+                className="px-3 py-1 bg-red-600 text-white font-semibold rounded-md cursor-pointer hover:bg-red-700 transition">
                 Leave
             </button>
         </div>

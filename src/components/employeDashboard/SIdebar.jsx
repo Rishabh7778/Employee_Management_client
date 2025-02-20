@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBuilding, FaTachometerAlt, FaUsers, FaCalendar, FaCogs, FaMoneyBillWave } from 'react-icons/fa';
+import { useAuth } from '../../context/authContext';
 
-const AdminSideBar = () => {
+const Sidebar = () => {
+    const { user } = useAuth()
+
     return (
         <div className="w-72 h-screen bg-gray-900 text-white flex flex-col p-5">
             {/* Sidebar Header */}
@@ -13,7 +16,7 @@ const AdminSideBar = () => {
             {/* Sidebar Links */}
             <div className="flex flex-col gap-5 mt-6">
                 <NavLink
-                    to="/admin-dashboard"
+                    to="/employee-dashboard"
                     className={({ isActive }) =>
                         `${isActive ? "bg-teal-500" : ""} flex items-center gap-4 px-5 py-4 rounded-lg text-lg hover:bg-gray-800 transition`
                     }
@@ -24,39 +27,32 @@ const AdminSideBar = () => {
 
 
                 <NavLink
-                    to="/admin-dashboard/employees"
+                    to={`/employee-dashboard/profile/${user._id}`}
                     className="flex items-center gap-4 px-5 py-4 rounded-lg text-lg hover:bg-gray-800 transition"
                 >
                     <FaTachometerAlt className="text-xl" />
-                    <span>Employees</span>
+                    <span>My profile</span>
                 </NavLink>
 
                 <NavLink
-                    to="/admin-dashboard/departments"
+                    to={`/employee-dashboard/leaves/${user._id}`}
                     className="flex items-center gap-4 px-5 py-4 rounded-lg text-lg hover:bg-gray-800 transition"
                 >
                     <FaUsers className="text-xl" />
-                    <span>Department</span>
+                    <span>Leaves</span>
                 </NavLink>
 
-                <NavLink
-                    to="/admin-dashboard/leaves"
-                    className="flex items-center gap-4 px-5 py-4 rounded-lg text-lg hover:bg-gray-800 transition"
-                >
-                    <FaCalendar className="text-xl" />
-                    <span>Leave</span>
-                </NavLink>
 
                 <NavLink
-                    to="/admin-dashboard/salary/add"
+                    to={`/employee-dashboard/salary/${user._id}`}
                     className="flex items-center gap-4 px-5 py-4 rounded-lg text-lg hover:bg-gray-800 transition"
                 >
                     <FaMoneyBillWave className="text-xl" />
                     <span>Salary</span>
-                </NavLink>
+                </NavLink>  
 
                 <NavLink
-                    to="/admin-dashboard/setting"
+                    to="/employee-dashboard/setting"
                     className="flex items-center gap-4 px-5 py-4 rounded-lg text-lg hover:bg-gray-800 transition"
                 >
                     <FaCogs className="text-xl" />
@@ -67,4 +63,4 @@ const AdminSideBar = () => {
     );
 };
 
-export default AdminSideBar;
+export default Sidebar;

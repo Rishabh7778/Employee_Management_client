@@ -4,13 +4,16 @@ import { useAuth } from '../../context/authContext';
 const Navbar = () => {
   const { user, logout, loading } = useAuth();
 
+  
+
+
   return (
     <nav className="bg-gray-800 px-6 py-4 flex justify-between items-center">
       <div className="text-white text-lg font-semibold">
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <p>Welcome {user?.name || "Admin"}</p>
+          <p>Welcome {user.name}</p>
         )}
       </div>
       <button

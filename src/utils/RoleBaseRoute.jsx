@@ -5,16 +5,17 @@ import { Navigate } from "react-router-dom";
 const RoleBaseRoute = ({ children, requiredRole }) => {
   const { user, loading } = useAuth();
 
-  // Wait until the authentication process is complete
   if (loading) return <div>Loading...</div>;
-
-  // If there's no authenticated user, redirect to login
   if (!user) return <Navigate to="/login" replace />;
 
-  // If the authenticated user doesn't have the required role, redirect to unauthorized page
-  if (!requiredRole.includes(user.role)) return <Navigate to="/unauthorized" replace />;
+  // Normalize roles for a case-insensitive comparison
+  const normalizedUserRole = user.role?.toLowerCase();
+  const normalizedRequiredRoles = requiredRole.map((role) => role.toLowerCase());
 
-  // If everything checks out, render the children components
+  if (!normalizedRequiredRoles.includes(normalizedUserRole)) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
   return children;
 };
 
