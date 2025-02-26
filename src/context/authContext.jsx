@@ -49,7 +49,7 @@ const AuthContext = ({ children }) => {
         const response = await axiosInstance.get("http://localhost:8000/api/auth/verify", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log("Verify response:", response.data); // Debug log
+        // console.log("Verify response:", response.data); // Debug log
         if (response.data.success) {
           setUser(response.data.user);
           if (response.data.token) {

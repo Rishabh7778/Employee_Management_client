@@ -23,6 +23,8 @@ import AddLeave from './components/leaves/AddLeave';
 import Setting from './components/employeDashboard/Setting';
 import Table from './components/leaves/Table';
 import LeaveDetails from './components/leaves/LeaveDetails';
+import Attandance from './components/attandance/Attandance';
+import AttandanceReports from './components/attandance/Attandance-Reports';
 
 
 
@@ -55,6 +57,8 @@ function App() {
           <Route path='/admin-dashboard/leaves/:id' element={<LeaveDetails />} />
           <Route path='/admin-dashboard/employees/leaves/:id' element={<LeaveList />} />
           <Route path='/admin-dashboard/setting' element={<Setting />} />
+          <Route path='/admin-dashboard/attandance' element={<Attandance />} />
+          <Route path='/admin-dashboard/attandanceReport' element={<AttandanceReports />} />
         </Route>
         <Route
           path='/employee-dashboard'
