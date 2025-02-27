@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 const View = () => {
   const { id } = useParams();
   const [employee, setEmployee] = useState(null);
-   const STATIC_URL = "http://localhost:5000/"
+   const STATIC_URL = "https://employee-mg-server.vercel.app/"
 
   useEffect(() => {
     const fetchEmployee = async () => {
