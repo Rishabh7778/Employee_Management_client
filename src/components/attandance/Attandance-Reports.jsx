@@ -3,18 +3,20 @@ import axios from "axios";
 
 const AttendanceReports = () => {
   const [report, setReport] = useState({});
-  const [limit, setLimit] = useState(5);
+  const [limit] = useState(5);
   const [skip, setSkip] = useState(0);
   const [loading, setLoading] = useState(false);
   const [dateFilter, setDateFilter] = useState("");
+  const [error, setError] = useState("");
 
   const fetchReport = async () => {
     setLoading(true);
+    setError(""); // Reset error before fetching
     const query = new URLSearchParams({ limit, skip });
     if (dateFilter) {
       query.append("date", dateFilter);
     }
-    // const BASE_URL = import.meta.env.VITE_BASE_URL;
+
     try {
       const response = await axios.get(
         `https://employee-mg-server.vercel.app/api/attendance/report?${query.toString()}`,
@@ -33,12 +35,19 @@ const AttendanceReports = () => {
         }
       } else {
         console.warn("Data not received:", response.data);
+        setError(response.data.error || "Failed to fetch report.");
       }
-    } catch (error) {
-      alert(error.message);
+    } catch (err) {
+      console.error("Error fetching report:", err);
+      setError(err.message);
     }
     setLoading(false);
   };
+
+  // Reset pagination when date filter changes
+  useEffect(() => {
+    setSkip(0);
+  }, [dateFilter]);
 
   useEffect(() => {
     fetchReport();
@@ -59,9 +68,15 @@ const AttendanceReports = () => {
         />
       </div>
 
+      {error && (
+        <div className="text-red-600 mb-4">
+          {error}
+        </div>
+      )}
+
       {loading ? (
         <div className="text-center text-gray-600">Loading...</div>
-      ) : (
+      ) : Object.entries(report).length > 0 ? (
         Object.entries(report).map(([date, records]) => (
           <div key={date} className="mb-6">
             <h3 className="text-lg font-semibold text-blue-600 mb-2">{date}</h3>
@@ -80,15 +95,15 @@ const AttendanceReports = () => {
                   {records.map((data, i) => (
                     <tr key={`${date}-${i}`} className="text-center border">
                       <td className="border px-4 py-2">{i + 1}</td>
-                      <td className="border px-4 py-2">{data.employeeId}</td>
-                      <td className="border px-4 py-2">{data.employeeName}</td>
-                      <td className="border px-4 py-2">{data.departmentName}</td>
+                      <td className="border px-4 py-2">{data.employeeId || "N/A"}</td>
+                      <td className="border px-4 py-2">{data.employeeName || "N/A"}</td>
+                      <td className="border px-4 py-2">{data.departmentName || "N/A"}</td>
                       <td
                         className={`border px-4 py-2 ${
                           data.status === "Present" ? "text-green-600" : "text-red-600"
                         }`}
                       >
-                        {data.status}
+                        {data.status || "Not Marked"}
                       </td>
                     </tr>
                   ))}
@@ -97,6 +112,8 @@ const AttendanceReports = () => {
             </div>
           </div>
         ))
+      ) : (
+        <div className="text-center text-gray-600">No attendance data found.</div>
       )}
 
       {/* Pagination Buttons */}

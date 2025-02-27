@@ -26,13 +26,20 @@ const Attandance = () => {
       // console.log("API Response:", response.data);
       if (response.data.success) {
         // console.log(response)
-        const data = response.data.attendance.map((att) => ({
-          employeeId: att.employeeId.employeeId,
-          sno: sno++,
-          department: att.employeeId.department.dep_name,
-          name: att.employeeId.userId.name,
-          action: (<AttendanceHelper status={att.status} employeeId={att.employeeId.employeeId} statusChange={statusChange} />)
-        }));
+        const data = response.data.attendance.map((att, index) => ({
+          employeeId: att.employeeId?.employeeId || "N/A",
+          sno: index + 1,
+          department: att.employeeId?.department?.dep_name || "N/A",
+          name: att.employeeId?.userId?.name || "N/A",
+          action: att.employeeId ? (
+            <AttendanceHelper 
+              status={att.status} 
+              employeeId={att.employeeId.employeeId} 
+              statusChange={statusChange} 
+            />
+          ) : null
+        })).filter(record => record.employeeId !== "N/A");
+        
         setAttendance(data);
         setfilteredAttendance(data)
       } else {
