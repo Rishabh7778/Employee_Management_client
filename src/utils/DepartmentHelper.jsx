@@ -29,7 +29,6 @@ export const DepartmentButtons = ({ Id, onDepartmentDelete }) => {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }
                 });
-                // Simply check for success and then call the parent's delete callback.
                 if (response.data.success) {
                     onDepartmentDelete(id);
                 }
