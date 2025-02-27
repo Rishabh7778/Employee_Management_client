@@ -14,10 +14,10 @@ const AttendanceReports = () => {
     if (dateFilter) {
       query.append("date", dateFilter);
     }
-    const BASE_URL = import.meta.env.VITE_BASE_URL;
+    // const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
       const response = await axios.get(
-        `${BASE_URL}attendance/report?${query.toString()}`,
+        `https://employee-mg-server.vercel.app/api/attendance/report?${query.toString()}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

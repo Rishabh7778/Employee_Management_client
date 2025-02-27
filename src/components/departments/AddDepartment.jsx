@@ -16,9 +16,9 @@ const AddDepartment = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const BASE_URL = import.meta.env.VITE_BASE_URL;
+        // const BASE_URL = import.meta.env.VITE_BASE_URL;
         try {
-            const response = await axios.post(`${BASE_URL}department/add`, department, {
+            const response = await axios.post(`https://employee-mg-server.vercel.app/api/department/add`, department, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }

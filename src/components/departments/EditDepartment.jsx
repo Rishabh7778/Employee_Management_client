@@ -16,9 +16,9 @@ const EditDepartment = () => {
     useEffect(() => {
         const fetchDepartment = async () => {
             setLoading(true);
-            const BASE_URL = import.meta.env.VITE_BASE_URL;
+            // const BASE_URL = import.meta.env.VITE_BASE_URL;
             try {
-                const response = await axios.get(`${BASE_URL}department/${id}`, {
+                const response = await axios.get(`https://employee-mg-server.vercel.app/api/department/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }

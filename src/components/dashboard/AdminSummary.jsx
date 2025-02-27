@@ -18,7 +18,7 @@ const AdminSummary = () => {
     const fetchSummary = async () => {
       const BASE_URL = import.meta.env.VITE_BASE_URL;
       try {
-        const summary = await axios.get(`${BASE_URL}dashboard/summary`, {
+        const summary = await axios.get(`https://employee-mg-server.vercel.app/api/dashboard/summary`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

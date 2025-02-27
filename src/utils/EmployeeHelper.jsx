@@ -77,7 +77,7 @@ export const fetchDepartments = async () => {
 export const getEmployees = async (id) => {
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-        const response = await axios.get(`${BASE_URL}employee/department/${id}`, {
+        const response = await axios.get(`https://employee-mg-server.vercel.app/api/employee/department/${id}`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }

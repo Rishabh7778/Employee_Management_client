@@ -20,7 +20,7 @@ const AddLeave = () => {
         const BASE_URL = import.meta.env.VITE_BASE_URL;
         try {
           const response = await axios.post(
-            `${BASE_URL}leave/add`,
+            `https://employee-mg-server.vercel.app/api/leave/add`,
             leave,
             {
               headers: {

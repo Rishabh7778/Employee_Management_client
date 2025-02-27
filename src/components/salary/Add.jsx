@@ -55,7 +55,7 @@ const Add = () => {
         const BASE_URL = import.meta.env.VITE_BASE_URL;
         try {
             const response = await axios.post(
-                `${BASE_URL}salary/add`,
+                `https://employee-mg-server.vercel.app/api/salary/add`,
                 salary,
                 {
                     headers: {

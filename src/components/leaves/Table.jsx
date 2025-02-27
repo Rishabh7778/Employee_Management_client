@@ -13,7 +13,7 @@ const Table = () => {
         const BASE_URL = import.meta.env.VITE_BASE_URL;
         // console.log("Fetching leaves from:", `${BASE_URL}leave`);
         
-        const response = await axios.get(`${BASE_URL}leave`, {
+        const response = await axios.get(`https://employee-mg-server.vercel.app/api/leave`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }

@@ -6,14 +6,14 @@ const LeaveDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [leave, setLeave] = useState(null);
-  const STATIC_URL = "http://localhost:5000/"
+  const STATIC_URL = "https://employee-mg-server.vercel.app/"
 
 
   useEffect(() => {
-    const BASE_URL = import.meta.env.VITE_BASE_URL;
+    // const BASE_URL = import.meta.env.VITE_BASE_URL;
     const fetchLeave = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}leave/detail/${id}`, {
+        const response = await axios.get(`https://employee-mg-server.vercel.app/api/leave/detail/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }

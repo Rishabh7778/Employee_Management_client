@@ -33,10 +33,10 @@ const Add = () => {
     Object.keys(formData).forEach((key) => {
       formDataObj.append(key, formData[key]);
     });
-    const BASE_URL = import.meta.env.VITE_BASE_URL;
+    // const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
       const response = await axios.post(
-        `${BASE_URL}employee/add`,
+        `https://employee-mg-server.vercel.app/api/employee/add`,
         formDataObj,
         {
           headers: {

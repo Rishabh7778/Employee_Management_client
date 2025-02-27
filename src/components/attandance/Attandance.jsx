@@ -16,9 +16,9 @@ const Attandance = () => {
   const fetchAttendance = async () => {
     setLoading(true);
     let sno = 1;
-    const BASE_URL = import.meta.env.VITE_BASE_URL;
+    // const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-      const response = await axios.get(`${BASE_URL}attendance`, {
+      const response = await axios.get(`https://employee-mg-server.vercel.app/api/attendance`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }

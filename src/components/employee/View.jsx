@@ -9,9 +9,9 @@ const View = () => {
 
   useEffect(() => {
     const fetchEmployee = async () => {
-      const BASE_URL = import.meta.env.VITE_BASE_URL;
+      // const BASE_URL = import.meta.env.VITE_BASE_URL;
       try {
-        const response = await axios.get(`${BASE_URL}employee/${id}`, {
+        const response = await axios.get(`https://employee-mg-server.vercel.app/api/employee/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }

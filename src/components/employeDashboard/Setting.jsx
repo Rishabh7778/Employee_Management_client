@@ -30,9 +30,9 @@ const Setting = () => {
             setError("Passwords do not match");
             return;
         }
-        const BASE_URL = import.meta.env.VITE_BASE_URL;
+        // const BASE_URL = import.meta.env.VITE_BASE_URL;
         try {
-            const response = await axios.put(`${BASE_URL}setting/change-password`, setting, {
+            const response = await axios.put(`https://employee-mg-server.vercel.app/api/setting/change-password`, setting, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },

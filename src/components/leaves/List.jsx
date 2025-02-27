@@ -16,7 +16,7 @@ const List = () => {
     const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
       const response = await axios.get(
-        `${BASE_URL}leave/${employeeId}`,
+        `https://employee-mg-server.vercel.app/api/leave/${employeeId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

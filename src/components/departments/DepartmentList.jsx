@@ -19,9 +19,9 @@ const DepartmentList = () => {
     const fetchDepartments = async () => {
       setLoading(true);
       let sno = 1;
-      const BASE_URL = import.meta.env.VITE_BASE_URL;
+      // const BASE_URL = import.meta.env.VITE_BASE_URL;
       try {
-        const response = await axios.get(`${BASE_URL}department`, {
+        const response = await axios.get(`https://employee-mg-server.vercel.app/api/department`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

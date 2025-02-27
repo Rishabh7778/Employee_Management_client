@@ -24,7 +24,7 @@ export const DepartmentButtons = ({ Id, onDepartmentDelete }) => {
         if (confirmDelete) {
             const BASE_URL = import.meta.env.VITE_BASE_URL;
             try {
-                const response = await axios.delete(`${BASE_URL}department/${id}`, {
+                const response = await axios.delete(`https://employee-mg-server.vercel.app/api/department/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }
