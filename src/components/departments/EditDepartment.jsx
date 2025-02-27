@@ -40,7 +40,7 @@ const EditDepartment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();  // Fixed: now e is defined
         try {
-            const response = await axios.put(`http://localhost:8000/api/department/${id}`, department, {
+            const response = await axios.put(`https://employee-mg-server.vercel.app/api/department/${id}`, department, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }
