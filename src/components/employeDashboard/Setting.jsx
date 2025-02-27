@@ -19,7 +19,7 @@ const Setting = () => {
         const { name, value } = e.target;
         setSetting((prevSetting) => ({
             ...prevSetting,
-            [name]: value, // Update specific field in state
+            [name]: value, 
         }));
     };
 
