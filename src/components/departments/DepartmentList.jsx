@@ -51,7 +51,7 @@ const DepartmentList = () => {
     fetchDepartments();
   }, []);
 
-  // Filter departments based on input
+
   const filterDepartments = (e) => {
     const searchValue = e.target.value.toLowerCase();
     setFilteredDepartments(departments.filter((dep) => dep.dep_name.toLowerCase().includes(searchValue)));
