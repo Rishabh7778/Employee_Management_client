@@ -12,7 +12,7 @@ const Attendance = () => {
 
   useEffect(() => {
     fetchAttendance();
-    return () => setAttendance([]); // Cleanup function
+    return () => setAttendance([]); 
   }, []);
 
   const fetchAttendance = async () => {
