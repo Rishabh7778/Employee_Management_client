@@ -5,18 +5,15 @@ import { useParams } from 'react-router-dom';
 const View = () => {
   const { id } = useParams();
   const [employee, setEmployee] = useState(null);
-  //  const STATIC_URL = "https://employee-mg-server.vercel.app/"
 
   useEffect(() => {
     const fetchEmployee = async () => {
-      // const BASE_URL = import.meta.env.VITE_BASE_URL;
       try {
         const response = await axios.get(`https://employee-mg-server.vercel.app/api/employee/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
         });
-        // console.log(response); // Check API response
         if (response.data.success) {
           setEmployee(response.data.employees);
         }
@@ -38,7 +35,7 @@ const View = () => {
             {/* Left Side - Profile Image */}
             <div className="relative w-40 h-40 md:w-56 md:h-56 mr-0 md:mr-8 mb-4 md:mb-0">
               <img 
-                src={`https://employee-mg-server.vercel.app/${employee.userId.profileImage}`} 
+                src={employee.userId.profileImage} 
                 alt="Profile-Image" 
                 className="w-full h-full rounded-full object-cover"
               />
@@ -51,7 +48,6 @@ const View = () => {
             {/* Right Side - Employee Details */}
             <div className="flex-1">
               <div className="space-y-4">
-                {/* Name Row */}
                 <div className="flex justify-between border-b pb-2">
                   <span className="text-lg font-bold">Name:</span>
                   <span className="text-lg">{employee.userId.name}</span>

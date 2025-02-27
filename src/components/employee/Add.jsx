@@ -3,7 +3,6 @@ import { fetchDepartments } from '../../utils/EmployeeHelper';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 const Add = () => {
   const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
@@ -33,7 +32,6 @@ const Add = () => {
     Object.keys(formData).forEach((key) => {
       formDataObj.append(key, formData[key]);
     });
-    // const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
       const response = await axios.post(
         `https://employee-mg-server.vercel.app/api/employee/add`,
@@ -45,7 +43,6 @@ const Add = () => {
         }
       );
       if (response.data.success) {
-        // Make sure you have imported or defined navigate if using react-router-dom v6
         navigate('/admin-dashboard/employees');
       }
     } catch (error) {
@@ -91,7 +88,7 @@ const Add = () => {
           />
         </div>
 
-        
+        {/* Designation */}
         <div>
           <label htmlFor="designation" className="block text-sm font-medium text-gray-700">
             Designation
