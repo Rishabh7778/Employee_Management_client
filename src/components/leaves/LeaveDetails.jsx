@@ -6,7 +6,7 @@ const LeaveDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [leave, setLeave] = useState(null);
-  const STATIC_URL = "https://employee-mg-server.vercel.app/"
+  // const STATIC_URL = "https://employee-mg-server.vercel.app/"
 
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const LeaveDetails = () => {
             {/* Left Side - Profile Image */}
             <div className="relative w-40 h-40 md:w-56 md:h-56 mr-0 md:mr-8 mb-4 md:mb-0">
               <img
-                src={`${STATIC_URL}${leave.employeeId.userId.profileImage}`}
+                src={`https://employee-mg-server.vercel.app/${leave.employeeId.userId.profileImage}`}
                 alt="Profile-Image"
                 className="w-full h-full rounded-full object-cover"
               />
