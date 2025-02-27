@@ -38,7 +38,7 @@ const View = () => {
             {/* Left Side - Profile Image */}
             <div className="relative w-40 h-40 md:w-56 md:h-56 mr-0 md:mr-8 mb-4 md:mb-0">
               <img 
-                src={`https://employee-mg-server.vercel.app//${employee.userId.profileImage}`} 
+                src={`https://employee-mg-server.vercel.app/${employee.userId.profileImage}`} 
                 alt="Profile-Image" 
                 className="w-full h-full rounded-full object-cover"
               />
