@@ -52,10 +52,10 @@ const Add = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        const BASE_URL = import.meta.env.VITE_BASE_URL;
         try {
             const response = await axios.post(
-                'http://localhost:8000/api/salary/add',
+                `${BASE_URL}salary/add`,
                 salary,
                 {
                     headers: {

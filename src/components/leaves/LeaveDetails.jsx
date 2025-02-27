@@ -6,37 +6,41 @@ const LeaveDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [leave, setLeave] = useState(null);
+  const STATIC_URL = "http://localhost:5000/"
+
 
   useEffect(() => {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     const fetchLeave = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/leave/detail/${id}`, {
+        const response = await axios.get(`${BASE_URL}leave/detail/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
         });
-        console.log(response); // Check API response
         if (response.data.success) {
           setLeave(response.data.leave);
         }
       } catch (error) {
-        console.error("Error fetching employee:", error);
+        console.error("Error fetching leave details:", error);
         alert(error.response?.data?.error || "Server Error!");
       }
     };
+    
 
     fetchLeave();
   }, [id]);
 
 
   const changeStatus = async(id, status) => {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-      const response = await axios.put(`http://localhost:8000/api/leave/${id}`, {status}, {
+      const response = await axios.put(`${BASE_URL}leave/${id}`, {status}, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
       });
-      console.log(response); // Check API response
+      // console.log(response); // Check API response
       if (response.data.success) {
         navigate('/admin-dashboard/leaves');
       }
@@ -55,7 +59,7 @@ const LeaveDetails = () => {
             {/* Left Side - Profile Image */}
             <div className="relative w-40 h-40 md:w-56 md:h-56 mr-0 md:mr-8 mb-4 md:mb-0">
               <img
-                src={`http://localhost:8000/${leave.employeeId.userId.profileImage}`}
+                src={`${STATIC_URL}${leave.employeeId.userId.profileImage}`}
                 alt="Profile-Image"
                 className="w-full h-full rounded-full object-cover"
               />

@@ -18,13 +18,14 @@ const Edit = () => {
 
   useEffect(() => {
     const fetchEmployee = async () => {
+      const BASE_URL = import.meta.env.VITE_BASE_URL;
       try {
-        const response = await axios.get(`http://localhost:8000/api/employee/${id}`, {
+        const response = await axios.get(`${BASE_URL}employee/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
         });
-        console.log(response); // Check API response
+        // console.log(response); // Check API response
         if (response.data.success) {
           // Use the correct property name based on your API response.
           // If your API returns { success: true, employees: {...} } use that.

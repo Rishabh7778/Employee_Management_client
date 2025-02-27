@@ -59,7 +59,8 @@ export const columns = [
 export const AttendanceHelper = ({ status, employeeId, statusChange }) => {
 
   const markEmployee = async (status, employeeId) => {
-    const response = await axios.put(`http://localhost:8000/api/attendance/update/${employeeId}`, { status }, {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+    const response = await axios.put(`${BASE_URL}attendance/update/${employeeId}`, { status }, {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem('token')}`
       },

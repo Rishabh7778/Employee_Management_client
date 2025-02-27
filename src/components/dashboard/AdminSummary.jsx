@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import SummaryCard from './SummaryCard';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import SummaryCard from "./SummaryCard";
+import axios from "axios";
 import {
   FaBuilding,
   FaCalendar,
@@ -8,39 +8,39 @@ import {
   FaHourglassEnd,
   FaMoneyBill,
   FaTimes,
-  FaUsers
-} from 'react-icons/fa';
+  FaUsers,
+} from "react-icons/fa";
 
 const AdminSummary = () => {
-
-  const [summary, setSummary] = useState(null)
-
+  const [summary, setSummary] = useState(null);
 
   useEffect(() => {
     const fetchSummary = async () => {
+      const BASE_URL = import.meta.env.VITE_BASE_URL;
       try {
-        const summary = await axios.get('http://localhost:8000/api/dashboard/summary', {
+        const summary = await axios.get(`${BASE_URL}dashboard/summary`, {
           headers: {
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
-          }
-        })
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         setSummary(summary.data);
       } catch (error) {
         console.log(error);
       }
-    }
-    fetchSummary()
-  }, [])
+    };
+    fetchSummary();
+  }, []);
 
-
-  if(!summary){
-    return <div>Loading...</div>
+  if (!summary) {
+    return <div className="flex justify-center items-center h-screen text-xl">Loading...</div>;
   }
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <h3 className="text-3xl font-bold text-gray-800 mb-6">Dashboard Overview</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div className="p-4 sm:p-6 md:p-8 bg-gray-100 min-h-screen">
+      <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+        Dashboard Overview
+      </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <SummaryCard
           icon={<FaUsers />}
           text="Total Employees"
@@ -61,8 +61,10 @@ const AdminSummary = () => {
         />
       </div>
 
-      <h3 className="text-3xl font-bold text-gray-800 mb-6 mt-12">Leave Details</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 mt-12 text-center">
+        Leave Details
+      </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <SummaryCard
           icon={<FaCalendar />}
           text="Leave Applied"

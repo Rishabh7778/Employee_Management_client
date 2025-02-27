@@ -33,9 +33,10 @@ const Add = () => {
     Object.keys(formData).forEach((key) => {
       formDataObj.append(key, formData[key]);
     });
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/employee/add',
+        `${BASE_URL}employee/add`,
         formDataObj,
         {
           headers: {

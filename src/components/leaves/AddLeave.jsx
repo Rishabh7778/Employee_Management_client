@@ -17,9 +17,10 @@ const AddLeave = () => {
     e.preventDefault();
     try {
       const fetchEmployee = async () => {
+        const BASE_URL = import.meta.env.VITE_BASE_URL;
         try {
           const response = await axios.post(
-            `http://localhost:8000/api/leave/add`,
+            `${BASE_URL}leave/add`,
             leave,
             {
               headers: {
@@ -27,7 +28,7 @@ const AddLeave = () => {
               },
             }
           );
-          console.log(response);
+          // console.log(response);
           if (response.data.success) {
             navigate(`/employee-dashboard/leaves/${user._id}`);
           }

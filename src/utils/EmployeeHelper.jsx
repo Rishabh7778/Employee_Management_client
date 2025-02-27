@@ -60,8 +60,9 @@ export const columns = [
 
 
 export const fetchDepartments = async () => {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-        const response = await axios.get('http://localhost:8000/api/department', {
+        const response = await axios.get(`${BASE_URL}department`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }
@@ -74,8 +75,9 @@ export const fetchDepartments = async () => {
 };
 
 export const getEmployees = async (id) => {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-        const response = await axios.get(`http://localhost:8000/api/employee/department/${id}`, {
+        const response = await axios.get(`${BASE_URL}employee/department/${id}`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             }

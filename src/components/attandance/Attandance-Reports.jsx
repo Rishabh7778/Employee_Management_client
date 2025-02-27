@@ -14,9 +14,10 @@ const AttendanceReports = () => {
     if (dateFilter) {
       query.append("date", dateFilter);
     }
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/attendance/report?${query.toString()}`,
+        `${BASE_URL}attendance/report?${query.toString()}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

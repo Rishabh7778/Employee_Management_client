@@ -13,13 +13,14 @@ const List = () => {
     const fetchEmployees = async () => {
       setEmpLoading(true);
       let sno = 1;
+      const BASE_URL = import.meta.env.VITE_BASE_URL;
       try {
-        const response = await axios.get('http://localhost:8000/api/employee', {
+        const response = await axios.get(`${BASE_URL}employee`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
         });
-        console.log("API Response:", response.data);
+        // console.log("API Response:", response.data);
         if (response.data.success) {
           const data = response.data.employees.map((emp) => ({
             _id: emp._id,

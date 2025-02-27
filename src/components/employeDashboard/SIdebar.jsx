@@ -1,12 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { FaBuilding, FaTachometerAlt, FaUsers, FaCalendar, FaCogs, FaMoneyBillWave } from 'react-icons/fa';
-import { useAuth } from '../../context/authContext';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { FaBuilding, FaTachometerAlt, FaUsers, FaCogs, FaMoneyBillWave } from "react-icons/fa";
+import { useAuth } from "../../context/authContext";
 
 const Sidebar = () => {
   const { user } = useAuth();
 
-  // Function to return the proper class based on active state
+  // Function to return active link class
   const navItemClass = ({ isActive }) =>
     `${isActive ? "bg-teal-500" : ""} flex items-center gap-4 px-5 py-4 rounded-lg text-lg hover:bg-gray-800 transition`;
 
@@ -19,43 +19,27 @@ const Sidebar = () => {
 
       {/* Sidebar Links */}
       <div className="flex flex-col gap-5 mt-6">
-        <NavLink
-          to="/employee-dashboard"
-          end
-          className={navItemClass}
-        >
+        <NavLink to="/employee-dashboard" end className={navItemClass}>
           <FaBuilding className="text-xl" />
           <span>Dashboard</span>
         </NavLink>
 
-        <NavLink
-          to={`/employee-dashboard/profile/${user._id}`}
-          className={navItemClass}
-        >
+        <NavLink to={`/employee-dashboard/profile/${user._id}`} className={navItemClass}>
           <FaTachometerAlt className="text-xl" />
-          <span>My profile</span>
+          <span>My Profile</span>
         </NavLink>
 
-        <NavLink
-          to={`/employee-dashboard/leaves/${user._id}`}
-          className={navItemClass}
-        >
+        <NavLink to={`/employee-dashboard/leaves/${user._id}`} className={navItemClass}>
           <FaUsers className="text-xl" />
           <span>Leaves</span>
         </NavLink>
 
-        <NavLink
-          to={`/employee-dashboard/salary/${user._id}`}
-          className={navItemClass}
-        >
+        <NavLink to={`/employee-dashboard/salary/${user._id}`} className={navItemClass}>
           <FaMoneyBillWave className="text-xl" />
           <span>Salary</span>
         </NavLink>
 
-        <NavLink
-          to="/employee-dashboard/setting"
-          className={navItemClass}
-        >
+        <NavLink to="/employee-dashboard/setting" className={navItemClass}>
           <FaCogs className="text-xl" />
           <span>Settings</span>
         </NavLink>

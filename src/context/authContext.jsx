@@ -23,10 +23,11 @@ const AuthContext = ({ children }) => {
         localStorage.getItem("refreshToken")
       ) {
         originalRequest._retry = true;
+        const BASE_URL = import.meta.env.VITE_BASE_URL;
         try {
           const refreshToken = localStorage.getItem("refreshToken");
           // Call the refresh endpoint with the refresh token
-          const response = await axios.post("http://localhost:8000/api/auth/refresh", { refreshToken });
+          const response = await axios.post(`${BASE_URL}auth/refresh`, { refreshToken });
           // Save the new access token
           localStorage.setItem("token", response.data.accessToken);
           // Update the header and retry the original request
@@ -43,10 +44,11 @@ const AuthContext = ({ children }) => {
   );
 
   const verifyUser = async () => {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        const response = await axiosInstance.get("http://localhost:8000/api/auth/verify", {
+        const response = await axiosInstance.get(`${BASE_URL}auth/verify`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         // console.log("Verify response:", response.data); // Debug log

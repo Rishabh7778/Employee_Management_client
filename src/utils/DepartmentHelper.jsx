@@ -22,8 +22,9 @@ export const DepartmentButtons = ({ Id, onDepartmentDelete }) => {
     const handleDelete = async (id) => {
         const confirmDelete = window.confirm("Do you want to delete?");
         if (confirmDelete) {
+            const BASE_URL = import.meta.env.VITE_BASE_URL;
             try {
-                const response = await axios.delete(`http://localhost:8000/api/department/${id}`, {
+                const response = await axios.delete(`${BASE_URL}department/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }

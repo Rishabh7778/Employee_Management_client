@@ -11,13 +11,14 @@ const View = () => {
   let sno = 1;
 
   const fetchSalaries = async () => {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-      const response = await axios.get(`http://localhost:8000/api/salary/${id}`, {
+      const response = await axios.get(`${BASE_URL}salary/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      console.log(response.data);
+      // console.log(response.data);
       if (response.data.success) {
         setSalaries(response.data.salary);
         setFilteredSalaries(response.data.salary);

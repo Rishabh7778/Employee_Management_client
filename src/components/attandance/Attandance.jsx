@@ -16,15 +16,16 @@ const Attandance = () => {
   const fetchAttendance = async () => {
     setLoading(true);
     let sno = 1;
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
-      const response = await axios.get('http://localhost:8000/api/attendance', {
+      const response = await axios.get(`${BASE_URL}attendance`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
       });
-      console.log("API Response:", response.data);
+      // console.log("API Response:", response.data);
       if (response.data.success) {
-        console.log(response)
+        // console.log(response)
         const data = response.data.attendance.map((att) => ({
           employeeId: att.employeeId.employeeId,
           sno: sno++,

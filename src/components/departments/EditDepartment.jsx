@@ -16,13 +16,14 @@ const EditDepartment = () => {
     useEffect(() => {
         const fetchDepartment = async () => {
             setLoading(true);
+            const BASE_URL = import.meta.env.VITE_BASE_URL;
             try {
-                const response = await axios.get(`http://localhost:8000/api/department/${id}`, {
+                const response = await axios.get(`${BASE_URL}department/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }
                 });
-                console.log("Fetched Department:", response.data.department);
+                // console.log("Fetched Department:", response.data.department);
                 if (response.data.success && response.data.department) {
                     setDepartment(response.data.department);
                 }

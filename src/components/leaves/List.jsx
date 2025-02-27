@@ -13,16 +13,17 @@ const List = () => {
   const employeeId = id || user._id;
 
   const fetchLeaves = async () => {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/leave/${employeeId}`,
+        `${BASE_URL}leave/${employeeId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
-      console.log("Response data:", response.data);
+      // console.log("Response data:", response.data);
       if (response.data.success) {
         setLeaves(response.data.leaves);
       }
