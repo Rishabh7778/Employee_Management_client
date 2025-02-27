@@ -21,7 +21,6 @@ const Navbar = () => {
         {menuOpen ? <FaTimes /> : <FaBars />}
       </button>
 
-      {/* Right: Logout Button */}
       <div
         className={`absolute sm:static top-16 right-0 bg-gray-800 sm:bg-transparent w-full sm:w-auto p-4 sm:p-0 transition-all duration-300 ${
           menuOpen ? "block" : "hidden sm:flex"
