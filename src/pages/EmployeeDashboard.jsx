@@ -33,7 +33,6 @@ const EmployeeDashboard = () => {
           </button>
         </div>
 
-        {/* Page Content */}
         <div className="flex-1 overflow-y-auto p-4">
           <Outlet />
         </div>
