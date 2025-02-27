@@ -91,7 +91,7 @@ const Add = () => {
           />
         </div>
 
-        {/* Designation */}
+        
         <div>
           <label htmlFor="designation" className="block text-sm font-medium text-gray-700">
             Designation
